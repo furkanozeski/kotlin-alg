@@ -1,18 +1,21 @@
-import data_structures.ResizableArrayQueueOfStrings
+import data_structures.LinkedList
 
 fun main() {
 
     val value = "abcdefghijklmnopqrstuvwxtz"
 
-    val stringQueue = ResizableArrayQueueOfStrings(10)
+    val linkedList = LinkedList()
 
-    for (i in value) {
-        stringQueue.enqueue(i.toString())
-    }
+    linkedList.push(value[0].toString()) //a
+    linkedList.push(value[1].toString()) //b
+    linkedList.push(value[2].toString()) //c
+    linkedList.push(value[3].toString()) //d
+    linkedList.push(value[4].toString()) //e
 
-    for (i in stringQueue) {
-        println("string queue value: $i")
-    }
+
+    println("popLast: ${linkedList.popLast()}")
+
+    linkedList.push(value[5].toString()) //e
 
 }
 
