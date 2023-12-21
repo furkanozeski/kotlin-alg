@@ -9,8 +9,8 @@ fun main() {
     for (i in input) {
         queue.enqueue(i.toString())
     }
-
-    printKthItem(k, queue)
+//
+//    printKthItem(k, queue)
 
 
 }
