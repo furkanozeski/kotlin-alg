@@ -43,21 +43,12 @@ fun transpose(arr: Array<Array<Int>>): Array<Array<Int>> {
 fun histogram(a: IntArray, m: Int): IntArray {
     val newArr = IntArray(size = m) { 0 }
 
-//    for (i in a.indices) {
-//        for (j in (i + 1)..<a.size) {
-//            if (a[i] == a[j]) {
-//                val index = (i) % (newArr.size)
-//                newArr[index]++
-//            }
-//        }
-//    }
     for (i in a.indices) {
         newArr[a[i]]++
     }
 
     return newArr
 }
-
 
 // 1.1.20
 fun factorial(n: Int): Int {
@@ -98,7 +89,6 @@ fun table(args: Array<String>) {
 
 // 1.1.22
 fun binarySearch(key: Int, arr: Array<Int>, lo: Int, hi: Int, depth: Int): Int {
-//    println("lo: $lo, hi: $hi, depth: $depth")
     if (lo > hi) return -1
     val mid = lo + (hi - lo) / 2
     return if (key > arr[mid]) binarySearch(key, arr, mid + 1, hi, depth + 1)
@@ -215,7 +205,6 @@ fun arrays(): Array<Array<Boolean>> {
     return demo
 }
 
-
 fun stairWayToTheHeaven(num: Int) {
     val halfWay = num / 2
     for (i in 0..num) {
@@ -241,14 +230,12 @@ fun repeatString(str: String, numberOf: Int): String {
     return (str + repeatString(str, numberOf - 1))
 }
 
-
 fun isPowerOfTwo(n: Int): Boolean {
 
     return n > 0 && n.and(n - 1) == 0
 }
 
 fun guessNumber1(n: Int): Int {
-//    println(guessNumber2(2126753390))
     var lo = 0
     var hi = n
 
@@ -276,7 +263,6 @@ fun guessNumber1(n: Int): Int {
 
     return res
 }
-
 
 fun guessNumber2(n: Int): Int {
     var mid = n / 2
@@ -309,7 +295,6 @@ fun guess(mid: Int): Int {
     return -1
 }
 
-
 class NumArray(nums: IntArray) {
     private val numbers = nums
     fun sumRange(left: Int, right: Int): Int {
@@ -322,34 +307,6 @@ class NumArray(nums: IntArray) {
     }
 }
 
-
-class MyStack() {
-    private val mutableList = mutableListOf<Int>()
-    private var n = 0
-    private var top = 0
-
-    fun push(x: Int) {
-        mutableList.plusAssign(x)
-        n += 1
-    }
-
-    fun pop(): Int {
-        val result = mutableList.removeAt(n - 1)
-        n -= 1
-        return result
-    }
-
-    fun top(): Int {
-        top = mutableList[n - 1]
-        return top
-    }
-
-    fun empty(): Boolean {
-        return n == 0
-    }
-
-}
-
 fun reverseWords(s: String): String {
     val sB = StringBuilder()
     for (i in s.split(' ').reversed()) {
@@ -359,7 +316,6 @@ fun reverseWords(s: String): String {
     }
     return sB.toString().trim(' ')
 }
-
 
 fun dijkstra(args: Array<String>) {
     val ops = mutableListOf<String>()
@@ -384,7 +340,6 @@ fun dijkstra(args: Array<String>) {
     }
     println(values.toString())
 }
-
 
 class FixedStackOfString(cap: Int) {
     private var n: Int = 0
@@ -420,7 +375,6 @@ class FixedStackOfString(cap: Int) {
         return arrayOfStrings.size != capacity
     }
 }
-
 
 fun infixToPostfix(value: String): String {
     val numbers = Stack<Int>()
