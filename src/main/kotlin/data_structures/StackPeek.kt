@@ -1,4 +1,4 @@
-package stack_queue_linkedlist
+package data_structures
 
 class StackPeek {
 
