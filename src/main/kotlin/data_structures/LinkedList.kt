@@ -46,7 +46,36 @@ class LinkedList {
         return item
     }
 
-
     fun isEmpty() = first == null
+
     fun isTailEmpty() = second == null
+
+    fun delete(k: Int): String? {
+        var item: String? = null
+        var flag = 0
+        for (i in this) {
+            flag++
+
+            if (k == flag){
+                item = i
+            }
+        }
+
+        return item
+    }
+
+
+    operator fun iterator(): Iterator<String?> = LinkedListIterator()
+
+    private inner class LinkedListIterator: Iterator<String?> {
+        var currentHead = first
+        override fun hasNext(): Boolean = currentHead != null
+
+        override fun next(): String? {
+            val item = currentHead?.item
+            currentHead = currentHead?.next
+            return item
+        }
+
+    }
 }

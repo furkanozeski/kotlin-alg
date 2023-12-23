@@ -11,11 +11,10 @@ fun main() {
     linkedList.push(value[2].toString()) //c
     linkedList.push(value[3].toString()) //d
     linkedList.push(value[4].toString()) //e
+    linkedList.push(value[5].toString()) //f
 
 
-    println("popLast: ${linkedList.popLast()}")
-
-    linkedList.push(value[5].toString()) //e
+    println("delete: ${linkedList.delete(7)}")
 
 }
 
