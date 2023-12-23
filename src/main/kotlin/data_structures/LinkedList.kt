@@ -62,6 +62,7 @@ open class LinkedList {
             }
             currentNode = currentNode?.next
         }
+        currentNode = null
     }
 
     fun insertAfter(first: Node?, second: Node?) {
@@ -83,33 +84,85 @@ open class LinkedList {
         }
     }
 
+    fun delete(k: Int) {
+        if (isEmpty()) return
+        if (size < 1) return
+
+
+        var flag = 1
+        var current = head
+        for (i in this) {
+            if (flag == k - 1 && current?.next != null) {
+                current.next = current.next?.next
+                size--
+                break
+            }
+            flag++
+            current = current?.next
+        }
+
+    }
+
+    fun remove2(linkedList: LinkedList, key: String) {
+        if (key == linkedList.head?.item) {
+            linkedList.head = head?.next
+            linkedList.size--
+            return
+        }
+
+
+        while (linkedList.head != null && linkedList.head?.item == key) {
+            linkedList.head = linkedList.head?.next
+            size--
+        }
+
+
+        var current = linkedList.head
+
+
+        for (i in linkedList) {
+            var next = current?.next
+
+            while (next != null && next.item == key) {
+                next = next.next
+                size--
+            }
+
+            current = next
+            current = current?.next
+        }
+
+
+    }
+
+    fun remove(linkedList: LinkedList, key: String) {
+        if (isEmpty() || key == null) {
+            return
+        }
+
+        var current = linkedList.head
+
+        while (current != null) {
+            var next = current.next
+
+            if (next?.item == key) {
+                next = next.next
+                linkedList.size--
+            }
+
+            current.next = next
+            current = current.next
+        }
+    }
+
+
     fun isEmpty() = head == null
 
     fun isTailEmpty() = tail == null
 
-    fun delete(k: Int): String? {
-        var item: String? = null
-        var flag = 0
-        for (i in this) {
-            flag++
-
-            if (k == flag) {
-                item = i
-            }
-        }
-
-        return item
-    }
-
     fun printAll() {
-        var counter = 0
         for (i in this) {
             println(i)
-            if (counter == 8) {
-                break
-            }
-
-            counter++
         }
     }
 
