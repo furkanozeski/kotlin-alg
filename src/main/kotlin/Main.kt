@@ -13,10 +13,7 @@ fun main() {
     linkedList.push(value[4].toString()) //e
     linkedList.push(value[5].toString()) //f
 
-    linkedList.removeAfter(linkedList.head?.next?.next?.next)
-
     linkedList.printAll()
-
 
 
 

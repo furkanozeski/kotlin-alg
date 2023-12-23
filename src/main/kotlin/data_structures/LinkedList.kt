@@ -41,7 +41,7 @@ open class LinkedList {
         val item = tail?.prev?.next?.item
         tail?.prev?.next = null
         tail = tail?.prev
-
+        size--
         return item
     }
 
@@ -57,10 +57,29 @@ open class LinkedList {
             if (i.equals(node.item) && currentNode?.equals(node) == true) {
                 currentNode.next = node.next?.next
                 oldNode = null
-                size --
+                size--
                 break
             }
             currentNode = currentNode?.next
+        }
+    }
+
+    fun insertAfter(first: Node?, second: Node?) {
+        if (first == null || second == null) return
+
+        var current = head
+
+        for (i in this) {
+            if (i.equals(first.item) && current?.equals(first) == true) {
+                var oldCurrent = current
+                second.next = current.next
+                current.next = second
+                oldCurrent = null
+                size++
+
+            }
+
+            current = current?.next
         }
     }
 
@@ -83,8 +102,14 @@ open class LinkedList {
     }
 
     fun printAll() {
+        var counter = 0
         for (i in this) {
             println(i)
+            if (counter == 8) {
+                break
+            }
+
+            counter++
         }
     }
 
@@ -92,11 +117,15 @@ open class LinkedList {
 
     private inner class LinkedListIterator : Iterator<String?> {
         var currentHead = head
+
+        var currentSize = size
+
         override fun hasNext(): Boolean = currentHead != null
 
         override fun next(): String? {
             val item = currentHead?.item
             currentHead = currentHead?.next
+            size--
             return item
         }
     }
