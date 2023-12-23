@@ -1,4 +1,5 @@
 import data_structures.LinkedList
+import data_structures.find
 
 fun main() {
 
@@ -13,10 +14,13 @@ fun main() {
     linkedList.push(value[4].toString()) //e
     linkedList.push(value[5].toString()) //f
 
-
-    println("delete: ${linkedList.delete(7)}")
-
+    //delete
+//    println("delete: ${linkedList.delete(7)}")
+    //find
+    println("find: ${linkedList.find("yu")}")
 }
+
+
 
 
 

@@ -76,6 +76,17 @@ class LinkedList {
             currentHead = currentHead?.next
             return item
         }
-
     }
+}
+
+fun LinkedList.find(it: String): Boolean {
+    var item = false
+
+    for (i in this) {
+        if (i == it) {
+            item = true
+        }
+    }
+
+    return item
 }
