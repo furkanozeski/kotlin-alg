@@ -14,10 +14,6 @@ fun main() {
     linkedList.push(value[5].toString()) //f
 
     linkedList.printAll()
-
-    asdasdas
-
-
 }
 
 
