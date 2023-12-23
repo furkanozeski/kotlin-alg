@@ -103,38 +103,6 @@ open class LinkedList {
 
     }
 
-    fun remove2(linkedList: LinkedList, key: String) {
-        if (key == linkedList.head?.item) {
-            linkedList.head = head?.next
-            linkedList.size--
-            return
-        }
-
-
-        while (linkedList.head != null && linkedList.head?.item == key) {
-            linkedList.head = linkedList.head?.next
-            size--
-        }
-
-
-        var current = linkedList.head
-
-
-        for (i in linkedList) {
-            var next = current?.next
-
-            while (next != null && next.item == key) {
-                next = next.next
-                size--
-            }
-
-            current = next
-            current = current?.next
-        }
-
-
-    }
-
     fun remove(linkedList: LinkedList, key: String) {
         if (isEmpty() || key == null) {
             return
@@ -143,14 +111,16 @@ open class LinkedList {
         var current = linkedList.head
 
         while (current != null) {
-            var next = current.next
+            var next = current.next // e
 
             if (next?.item == key) {
-                next = next.next
+                next = next.next // f
                 linkedList.size--
             }
-
+            // e = f
             current.next = next
+
+            // d = f
             current = current.next
         }
     }
