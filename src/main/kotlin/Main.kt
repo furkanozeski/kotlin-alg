@@ -15,7 +15,7 @@ fun main() {
 
     linkedList.printAll()
 
-
+    asdasdas
 
 
 }
