@@ -110,16 +110,15 @@ open class LinkedList {
 
         var current = linkedList.head
 
-        while (current != null) {
-            var next = current.next
+        for (i in linkedList) {
+            var next = current?.next
 
-            if (next?.item == key) {
+            if (next?.item?.equals(key) == true) {
                 next = next.next
-                linkedList.size--
             }
 
-            current.next = next
-            current = current.next
+            current?.next = next
+            current = current?.next
         }
     }
 

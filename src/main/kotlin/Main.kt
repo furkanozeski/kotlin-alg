@@ -15,5 +15,7 @@ fun main() {
     linkedList.push(value[6].toString()) //g
     linkedList.push(value[4].toString()) //e
 
+    linkedList.remove(linkedList, "e")
+
     linkedList.printAll()
 }
