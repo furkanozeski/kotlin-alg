@@ -17,11 +17,13 @@ fun main() {
 
     val intLinkedList = LinkedList<Int>()
 
-    intLinkedList.push(11)
-    intLinkedList.push(33)
-    intLinkedList.push(20)
     intLinkedList.push(10)
-    intLinkedList.push(30)
+    intLinkedList.push(9)
+    intLinkedList.push(8)
+    intLinkedList.push(11)
+    intLinkedList.push(7)
+    intLinkedList.push(6)
+
 
 
     println("max: ${intLinkedList.maxRec(intLinkedList.head)}")

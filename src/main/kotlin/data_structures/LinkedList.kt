@@ -150,18 +150,25 @@ open class LinkedList<T> {
     }
 
 
-     fun maxRec(node: Node?): Int {
-        return maxRecursive(node, 0)
+    fun maxRec(node: Node?): Int {
+        return maxRecursive(node, node?.item as Int)
     }
 
+    // 10, 9, 8, 11, 7, 6
     private tailrec fun maxRecursive(node: Node?, number: Int): Int {
         if (node == null) return number
+        if (node.item == null) return number
+        if (node.next?.item == null) return number
 
+        val next = node.next
+        val nodeNumber = (node.next?.item as Int)
 
-        return if (number < (node.item as Int)) {
-            maxRecursive(node.next, node.item as Int)
-        } else if (number > node.item as Int) {
-            maxRecursive(node.next, number)
+        return if (number < nodeNumber) {
+            maxRecursive(next, nodeNumber)
+
+        } else if (number > nodeNumber) {
+            maxRecursive(next, number)
+
         } else {
             number
         }
