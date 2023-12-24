@@ -104,27 +104,24 @@ open class LinkedList {
     }
 
     fun remove(linkedList: LinkedList, key: String) {
-        if (isEmpty() || key == null) {
+        if (linkedList.isEmpty()) {
             return
         }
 
         var current = linkedList.head
 
         while (current != null) {
-            var next = current.next // e
+            var next = current.next
 
             if (next?.item == key) {
-                next = next.next // f
+                next = next.next
                 linkedList.size--
             }
-            // e = f
-            current.next = next
 
-            // d = f
+            current.next = next
             current = current.next
         }
     }
-
 
     fun isEmpty() = head == null
 

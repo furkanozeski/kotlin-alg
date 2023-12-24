@@ -1,7 +1,6 @@
 import data_structures.LinkedList
 
 fun main() {
-
     val value = "abcdefghijklmnopqrstuvwxtz"
 
     val linkedList = LinkedList()
@@ -15,9 +14,6 @@ fun main() {
     linkedList.push(value[4].toString()) //e
     linkedList.push(value[6].toString()) //g
     linkedList.push(value[4].toString()) //e
-
-
-    linkedList.remove(linkedList, "e")
 
     linkedList.printAll()
 }
