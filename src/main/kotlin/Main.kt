@@ -1,21 +1,29 @@
 import data_structures.LinkedList
 
 fun main() {
-    val value = "abcdefghijklmnopqrstuvwxtz"
+    val stringValue = "abcdefghijklmnopqrstuvwxtz"
+    val linkedList = LinkedList<String>()
 
-    val linkedList = LinkedList()
+    linkedList.push(stringValue[0].toString()) //a
+    linkedList.push(stringValue[1].toString()) //b
+    linkedList.push(stringValue[2].toString()) //c
+    linkedList.push(stringValue[3].toString()) //d
+    linkedList.push(stringValue[4].toString()) //e
+    linkedList.push(stringValue[5].toString()) //f
+    linkedList.push(stringValue[4].toString()) //e
+    linkedList.push(stringValue[6].toString()) //g
+    linkedList.push(stringValue[4].toString()) //e
 
-    linkedList.push(value[0].toString()) //a
-    linkedList.push(value[1].toString()) //b
-    linkedList.push(value[2].toString()) //c
-    linkedList.push(value[3].toString()) //d
-    linkedList.push(value[4].toString()) //e
-    linkedList.push(value[5].toString()) //f
-    linkedList.push(value[4].toString()) //e
-    linkedList.push(value[6].toString()) //g
-    linkedList.push(value[4].toString()) //e
 
-    linkedList.remove(linkedList, "e")
+    val intLinkedList = LinkedList<Int>()
 
-    linkedList.printAll()
+    intLinkedList.push(11)
+    intLinkedList.push(33)
+    intLinkedList.push(20)
+    intLinkedList.push(10)
+    intLinkedList.push(30)
+
+
+    println("max: ${intLinkedList.maxRec(intLinkedList.head)}")
+
 }

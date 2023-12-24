@@ -1,6 +1,6 @@
 package data_structures
 
-open class LinkedList {
+open class LinkedList<T> {
 
     var head: Node? = null
 
@@ -9,9 +9,9 @@ open class LinkedList {
     private var size = 0
 
 
-    inner class Node(var item: String? = null, var next: Node? = null, var prev: Node? = null)
+    inner class Node(var item: T? = null, var next: Node? = null, var prev: Node? = null)
 
-    fun push(item: String) {
+    fun push(item: T) {
         val last = tail
 
         tail = Node(item)
@@ -27,7 +27,7 @@ open class LinkedList {
         size++
     }
 
-    fun pop(): String? {
+    fun pop(): T? {
         val item = head?.item
         head = head?.next
         if (isEmpty()) {
@@ -37,7 +37,7 @@ open class LinkedList {
         return item
     }
 
-    fun popLast(): String? {
+    fun popLast(): T? {
         val item = tail?.prev?.next?.item
         tail?.prev?.next = null
         tail = tail?.prev
@@ -54,7 +54,7 @@ open class LinkedList {
 
 
         for (i in this) {
-            if (i.equals(node.item) && currentNode?.equals(node) == true) {
+            if (i?.equals(node.item) == true && currentNode?.equals(node) == true) {
                 currentNode.next = node.next?.next
                 oldNode = null
                 size--
@@ -71,7 +71,7 @@ open class LinkedList {
         var current = head
 
         for (i in this) {
-            if (i.equals(first.item) && current?.equals(first) == true) {
+            if (i?.equals(first.item) == true && current?.equals(first) == true) {
                 var oldCurrent = current
                 second.next = current.next
                 current.next = second
@@ -103,7 +103,7 @@ open class LinkedList {
 
     }
 
-    fun remove(linkedList: LinkedList, key: String) {
+    fun remove(linkedList: LinkedList<T>, key: String) {
         if (linkedList.isEmpty()) {
             return
         }
@@ -132,16 +132,52 @@ open class LinkedList {
         }
     }
 
-    operator fun iterator(): Iterator<String?> = LinkedListIterator()
+    fun max(node: Node): Int {
+        if (isEmpty()) return 0
+        if (head!! != node) return 0
+        if (head!!.item !is Int && node.item !is Int) return 0
 
-    private inner class LinkedListIterator : Iterator<String?> {
+        var maxValue = head?.item as Int
+
+        for (i in this) {
+            val value = i as Int
+            if (maxValue < value) {
+                maxValue = value
+            }
+        }
+
+        return maxValue
+    }
+
+
+     fun maxRec(node: Node?): Int {
+        return maxRecursive(node, 0)
+    }
+
+    private tailrec fun maxRecursive(node: Node?, number: Int): Int {
+        if (node == null) return number
+
+
+        return if (number < (node.item as Int)) {
+            maxRecursive(node.next, node.item as Int)
+        } else if (number > node.item as Int) {
+            maxRecursive(node.next, number)
+        } else {
+            number
+        }
+    }
+
+    operator fun iterator(): Iterator<T?> = LinkedListIterator()
+
+
+    private inner class LinkedListIterator : Iterator<T?> {
         var currentHead = head
 
         var currentSize = size
 
         override fun hasNext(): Boolean = currentHead != null
 
-        override fun next(): String? {
+        override fun next(): T? {
             val item = currentHead?.item
             currentHead = currentHead?.next
             size--
@@ -150,7 +186,7 @@ open class LinkedList {
     }
 }
 
-fun LinkedList.find(it: String): Boolean {
+fun <T : Any> LinkedList<T>.find(it: T): Boolean {
     var item = false
 
     for (i in this) {
@@ -161,4 +197,5 @@ fun LinkedList.find(it: String): Boolean {
 
     return item
 }
+
 
