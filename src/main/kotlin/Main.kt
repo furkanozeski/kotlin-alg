@@ -8,9 +8,8 @@ fun main(args: Array<String>) {
 
     val queue = LinkedQueue()
 
-    queue.enqueue("a")
-    queue.enqueue("b")
-    queue.enqueue("c")
-    queue.enqueue("d")
-
+   for (i in stringValue) {
+       queue.enqueue(i.toString())
+   }
+    queue.printAll()
 }

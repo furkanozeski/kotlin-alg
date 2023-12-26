@@ -16,8 +16,39 @@ class LinkedQueue {
             last = node
             node.next = last
         } else {
+            val oldLast = last
             node.next = last?.next
-            last?.next = node
+            last = node
+            oldLast?.next = last
+            last
+        }
+
+        size++
+    }
+
+    fun printAll() {
+        for (i in this) {
+            println(i)
+        }
+    }
+
+
+
+    operator fun iterator(): Iterator<String> = CircularLinkedListIterator()
+
+
+    private inner class CircularLinkedListIterator: Iterator<String> {
+        var currentSize = size
+
+        var currentNode = last
+
+        override fun hasNext(): Boolean = currentSize >= 0
+
+        override fun next(): String {
+            val item = currentNode!!.item
+            currentNode = currentNode?.next
+            currentSize--
+            return item
         }
 
     }
