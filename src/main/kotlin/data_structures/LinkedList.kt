@@ -11,7 +11,7 @@ open class LinkedList<T> {
 
     inner class Node(var item: T? = null, var next: Node? = null, var prev: Node? = null)
 
-    fun push(item: T) {
+    fun enqueue(item: T) {
         val last = tail
 
         tail = Node(item)
@@ -23,18 +23,33 @@ open class LinkedList<T> {
             tail?.prev = last
             last?.prev = null
         }
+    }
 
-        size++
+    fun push(item: T) {
+        head = Node(item, head)
+
+        if (tail == null) {
+            tail = head
+        }
     }
 
     fun pop(): T? {
         val item = head?.item
+        var currentHead = head
         head = head?.next
+        currentHead = null
         if (isEmpty()) {
             tail = null
         }
         size--
         return item
+    }
+
+    fun frontToBack() {
+        tail?.next = head
+        tail = head
+        head = head?.next
+        tail?.next = null
     }
 
     fun popLast(): T? {
@@ -154,7 +169,20 @@ open class LinkedList<T> {
         return maxRecursive(node, node?.item as Int)
     }
 
-    // 10, 9, 8, 11, 7, 6
+
+    fun reversed(x: Node?): Node? {
+        var first = head
+        var reverse: Node? = null
+        while (first != null) {
+            val second = first.next
+            first.next = reverse
+            reverse = first
+            first = second
+        }
+        head = reverse
+        return reverse
+    }
+
     private tailrec fun maxRecursive(node: Node?, number: Int): Int {
         if (node == null) return number
         if (node.item == null) return number
