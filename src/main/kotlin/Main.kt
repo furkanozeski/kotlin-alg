@@ -1,21 +1,22 @@
-import data_structures.Steque
+import data_structures.Deque
 
 var HIZ = 255
 
 fun main(args: Array<String>) {
     val stringValue = "abcdefghijklmnopqrstuvwxtz"
-    val steque = Steque<String>()
+    val deque = Deque<String>()
+    deque.pushLeft("-1")
+    deque.pushLeft("0")
+    deque.pushRight("a")
+    deque.pushLeft("1")
+    deque.pushLeft("2")
+    deque.pushRight("b")
+    deque.pushRight("c")
+    deque.pushLeft("3")
+    deque.pushRight("d")
+    deque.pushLeft("4")
 
-    steque.push("a")
-    steque.enqueue("1")
-    steque.enqueue("2")
-    steque.push("b")
-    steque.push("c")
-    steque.enqueue("3")
-    steque.push("d")
-    steque.enqueue("4")
 
-
-    steque.printAll()
+    deque.printAll()
 
 }
